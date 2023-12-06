@@ -19,7 +19,28 @@ void singlePlayerGame() {
                             {{9, 9}, {9, 9}} };
 
     for (int i = 0; i < sizeof(computerShips) / sizeof(computerShips[0]); i++) {
-        placeShip(computerBoard, computerShips[i]);
+        // Náhodné umiestnenie počiatočného bodu
+        computerShips[i].start.row = rand() % BOARD_SIZE;
+        computerShips[i].start.col = rand() % BOARD_SIZE;
+
+        // Náhodná veľkosť lode (2 alebo 3 v riadku, 1 v stĺpci)
+        int shipSize = rand() % 2 + 2;
+
+        // Náhodný smer (0 - horizontálny, 1 - vertikálny)
+        int direction = rand() % 2;
+
+        // Nastavenie koncového bodu na základe smeru
+        if (direction == 0) {  // Horizontálny
+            computerShips[i].end.row = computerShips[i].start.row;
+            computerShips[i].end.col = (computerShips[i].start.col + shipSize - 1) % BOARD_SIZE;
+        }
+        else {  // Vertikálny
+            computerShips[i].end.row = (computerShips[i].start.row + shipSize - 1) % BOARD_SIZE;
+            computerShips[i].end.col = computerShips[i].start.col;
+        }
+
+    placeShip(computerBoard, computerShips[i]);
+        
     }
 
     // Umiestnenie lodi hraca
