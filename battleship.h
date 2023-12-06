@@ -9,8 +9,8 @@
 #define BOARD_SIZE 10
 #define SHIP 'S'
 #define HIT 'X'
-#define MISS 'O'
-#define WATER '0'
+#define MISS '0'
+#define WATER 'O'
 
 typedef struct {
     int row;
