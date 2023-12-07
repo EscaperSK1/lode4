@@ -107,7 +107,10 @@ void singlePlayerGame() {
             } while (!isValidShot(playerBoard, shot));
 
             updateBoard(playerBoard, shot);
-
+            printf("Moja plocha: \n");
+            printPlayerBoard(playerBoard, 0);
+            printf("--------------------------------- \n");
+            
             // Kontrola, ci su vsetky lode hraca potopene
             int shipsRemaining = 0;
             for (int i = 0; i < BOARD_SIZE; i++) {
